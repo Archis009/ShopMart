@@ -1,19 +1,21 @@
-# Rent-It Platform 🏠🛠️
+# Buyback & Resale Marketplace 🔁🛒
 
 ## 📌 Project Overview
-Rent-It Platform is a full-stack e-commerce web application that allows users to **rent products instead of purchasing them**.  
-The platform focuses on promoting affordability, sustainability, and smarter consumption by enabling short-term and long-term rentals of items such as tools, electronics, books, cameras, and event accessories.
+Buyback & Resale Marketplace is a full-stack e-commerce platform that enables users to **sell their pre-owned products** and allows other users to **buy verified second-hand items** at affordable prices.
+
+The platform promotes **sustainability, affordability, and reuse** by extending the lifecycle of products through a structured and trusted resale system.
 
 ---
 
 ## 🎯 Problem Statement
-Many products are used occasionally but require a high upfront cost to purchase.  
-Buying such items leads to unnecessary expenses and underutilization.
+Many usable products such as electronics, books, furniture, and gadgets remain unused or are discarded due to lack of a reliable resale platform.
 
-**Rent-It Platform solves this problem by:**
-- Allowing users to rent items only when needed
-- Reducing waste and promoting reuse
-- Providing a structured rental system with availability tracking and secure transactions
+At the same time, buyers often hesitate to purchase second-hand items due to trust and quality concerns.
+
+**This platform solves these problems by:**
+- Providing a secure buyback and resale mechanism
+- Ensuring quality verification before resale
+- Offering transparent pricing and seller ratings
 
 ---
 
@@ -21,28 +23,26 @@ Buying such items leads to unnecessary expenses and underutilization.
 
 ### 👤 User Features
 - User authentication (Sign up / Login)
-- Browse rental products by category
-- View product availability using a calendar
-- Select rental duration and place orders
-- Security deposit handling
-- Order tracking and rental history
-- Ratings and reviews for products
+- List products for resale with images and condition details
+- Buy verified pre-owned products
+- Smart price suggestions based on product condition
+- Order tracking and purchase history
+- Seller ratings and reviews
 
-### 🏪 Owner / Admin Features
-- Add, update, and remove rental products
-- Set rental price per day
-- Manage availability calendar
-- Approve or reject rental requests
-- Monitor active rentals and returns
-- Handle late return penalties
+### 🛠️ Admin Features
+- Review and approve resale listings
+- Verify product quality and condition
+- Manage categories and pricing guidelines
+- Handle disputes and returns
+- Monitor transactions and platform activity
 
 ---
 
 ## 🧠 Unique Highlights
-- Rental-based pricing instead of one-time purchase
-- Availability conflict handling (no double booking)
-- Deposit + penalty calculation logic
-- Real-world business logic implementation
+- Buyback + resale flow instead of direct selling
+- Condition-based pricing logic
+- Trust-based verification system
+- Sustainable e-commerce model
 
 ---
 
@@ -58,14 +58,14 @@ Buying such items leads to unnecessary expenses and underutilization.
 - Express.js
 
 ### Database
-- MongoDB (for flexible product & rental schemas)  
-  **or**
-- SQL (for structured booking and transaction management)
+- MongoDB (for flexible product and condition data)  
+  **or**  
+- SQL (for structured transactions and order management)
 
 ### Other Tools
-- JWT for authentication
+- JWT authentication
 - REST APIs
-- Git & GitHub for version control
+- Git & GitHub
 
 ---
 
@@ -75,41 +75,44 @@ Buying such items leads to unnecessary expenses and underutilization.
 - id
 - name
 - email
-- role (user / admin)
+- role (buyer / seller / admin)
+- rating
 
 ### Product
 - id
-- name
+- title
 - category
-- pricePerDay
-- securityDeposit
-- availabilityDates
+- condition (new / like-new / good / fair)
+- originalPrice
+- resalePrice
+- sellerId
+- status (pending / approved / sold)
 
-### Rental
+### Order
 - id
-- userId
+- buyerId
 - productId
-- startDate
-- endDate
-- totalCost
-- status (active / returned / late)
+- price
+- orderStatus
+- createdAt
 
 ---
 
 ## 🚀 Future Enhancements
-- Online payment gateway integration
-- Location-based rental search
-- Insurance option for high-value items
-- Subscription-based rentals
-- Admin analytics dashboard
+- AI-based dynamic pricing recommendations
+- Automated product condition validation
+- In-app chat between buyer and seller
+- Buyback guarantee for selected products
+- Analytics dashboard for sellers and admins
 
 ---
 
 ## 📈 Learning Outcomes
-- Hands-on experience with full-stack development
-- Implemented real-world rental business logic
-- Improved understanding of REST APIs and database design
-- Built scalable and maintainable application architecture
+- Designed a real-world marketplace system
+- Implemented role-based access control
+- Gained experience in handling complex business logic
+- Improved understanding of scalable database design
+- Built an end-to-end full-stack application
 
 ---
 

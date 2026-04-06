@@ -1,36 +1,50 @@
-import { useState, useEffect } from 'react'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, AuthContext } from './utils/AuthContext';
+import { CartProvider } from './utils/CartContext';
+import Navbar from './components/Navbar';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Products from './pages/Products';
+import Cart from './pages/Cart';
+import './App.css';
 
-function App() {
-    const [data, setData] = useState(null);
+function AppContent() {
+  const { user } = React.useContext(AuthContext);
 
-    useEffect(() => {
-        const apiUrl = import.meta.env.VITE_API_URL || '';
-        fetch(`${apiUrl}/api/health`)
-            .then(res => res.json())
-            .then(data => setData(data))
-            .catch(err => console.error('Error fetching health check:', err));
-    }, []);
-
-    return (
-        <div className="container">
-            <h1>ShopSmart</h1>
-            <div className="card">
-                <h2>Backend Status</h2>
-                {data ? (
-                    <div>
-                        <p>Status: <span className="status-ok">{data.status}</span></p>
-                        <p>Message: {data.message}</p>
-                        <p>Timestamp: {data.timestamp}</p>
-                    </div>
-                ) : (
-                    <p>Loading backend status...</p>
-                )}
-            </div>
-            <p className="hint">
-                Edit <code>src/App.jsx</code> and save to test HMR
-            </p>
-        </div>
-    )
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Navigate to="/products" />} />
+        <Route
+          path="/login"
+          element={user ? <Navigate to="/products" /> : <Login />}
+        />
+        <Route
+          path="/register"
+          element={user ? <Navigate to="/products" /> : <Register />}
+        />
+        <Route path="/products" element={<Products />} />
+        <Route
+          path="/cart"
+          element={user ? <Cart /> : <Navigate to="/login" />}
+        />
+      </Routes>
+    </>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <Router>
+      <AuthProvider>
+        <CartProvider>
+          <AppContent />
+        </CartProvider>
+      </AuthProvider>
+    </Router>
+  );
+}
+
+export default App;
